@@ -154,15 +154,15 @@ export default function FacultyDevelopment() {
                 const Icon = categoryIcons[item.type] || Target;
                 return (
                   <div key={item.id} className="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 min-w-0">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${categoryColors[item.type]}`}>
                         <Icon size={20} />
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-amber-600 uppercase tracking-wide mb-1">{item.faculty} requested approval</div>
-                        <h4 className="font-bold text-gray-800">{item.title}</h4>
-                        <div className="text-xs font-semibold text-gray-500 flex items-center gap-2 mt-1">
-                          <span>{item.type}</span> • <span>{item.organization}</span> • <span>Status: {item.status}</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-amber-600 uppercase tracking-wide mb-1 truncate">{item.faculty} requested approval</div>
+                        <h4 className="font-bold text-gray-800 break-words">{item.title}</h4>
+                        <div className="text-[11px] font-semibold text-gray-500 flex flex-wrap items-center gap-1.5 mt-1 leading-tight">
+                          <span>{item.type}</span> <span className="opacity-50">•</span> <span>{item.organization}</span> <span className="opacity-50">•</span> <span>Status: {item.status}</span>
                         </div>
                       </div>
                     </div>

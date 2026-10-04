@@ -42,8 +42,8 @@ export default function FacultyDashboard() {
   return (
     <div className="h-full flex flex-col gap-3 p-4 overflow-hidden bg-gray-50 dark:bg-[#0f172a]">
       
-      {/* 1. Top Banner (Fixed Height) */}
-      <div className="h-[120px] shrink-0 bg-blue-900 rounded-2xl relative overflow-hidden flex items-center px-6 justify-between border border-blue-800 shadow-sm">
+      {/* 1. Top Banner (Flexible Height) */}
+      <div className="min-h-[120px] py-6 shrink-0 bg-blue-900 rounded-2xl relative overflow-hidden flex items-center px-6 justify-between border border-blue-800 shadow-sm">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/90 to-transparent z-10"></div>
         {/* Placeholder for building image */}
         <div className="absolute inset-y-0 right-0 w-1/2 bg-blue-800 opacity-20"></div>
