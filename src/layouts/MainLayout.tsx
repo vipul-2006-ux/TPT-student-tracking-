@@ -195,7 +195,7 @@ export default function MainLayout({ role }: { role: string }) {
         </div>
       )}
 
-      <div className={`h-screen bg-[#f3f4f6] font-sans overflow-hidden relative ${role === 'admin' ? 'hidden md:flex' : 'flex'}`}>
+      <div className={`h-[100dvh] bg-[#f3f4f6] font-sans overflow-hidden relative ${role === 'admin' ? 'hidden md:flex' : 'flex'}`}>
 
       {/* Left Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between hidden md:flex h-full">
@@ -266,7 +266,7 @@ export default function MainLayout({ role }: { role: string }) {
       )}
 
       {/* Main Content Area */}
-      <main className={`flex-1 flex flex-col h-screen overflow-hidden relative ${role !== 'admin' ? 'pb-20 md:pb-0' : ''}`}>
+      <main className={`flex-1 flex flex-col overflow-hidden relative ${role !== 'admin' ? 'pb-20 md:pb-0' : ''}`}>
         
         {/* Top Header */}
         <header className="h-16 shrink-0 bg-white/50 backdrop-blur-md flex items-center justify-between px-4 md:px-6 z-10 border-b border-gray-100/50">
