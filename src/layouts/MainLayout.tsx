@@ -25,7 +25,9 @@ import {
   Pin,
   Lock,
   Unlock,
-  ShieldAlert
+  ShieldAlert,
+  Monitor,
+  Menu
 } from 'lucide-react';
 
 // A high-quality 3D avatar URL to act as the pet/avatar
@@ -172,7 +174,28 @@ export default function MainLayout({ role }: { role: string }) {
   }
 
   return (
-    <div className="flex h-screen bg-[#f3f4f6] font-sans overflow-hidden relative">
+    <>
+      {/* Mobile Block for Admin */}
+      {role === 'admin' && (
+        <div className="md:hidden min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 text-center animate-fade-in">
+          <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner">
+            <Monitor size={40} />
+          </div>
+          <h2 className="text-3xl font-black text-gray-800 mb-3 tracking-tight">Desktop Required</h2>
+          <p className="text-sm text-gray-500 font-medium mb-10 max-w-xs leading-relaxed">
+            The Admin Portal is highly detailed and requires a larger screen. Please log in from a desktop or laptop system to continue.
+          </p>
+          <button onClick={() => {
+              sessionStorage.clear();
+              localStorage.removeItem('currentUser');
+              nav('/login');
+            }} className="bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold w-full max-w-xs shadow-lg shadow-blue-500/30 transition-transform active:scale-95">
+            Back to Login
+          </button>
+        </div>
+      )}
+
+      <div className={`h-screen bg-[#f3f4f6] font-sans overflow-hidden relative ${role === 'admin' ? 'hidden md:flex' : 'flex'}`}>
 
       {/* Left Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between hidden md:flex h-full">
@@ -221,12 +244,40 @@ export default function MainLayout({ role }: { role: string }) {
         </div>
       </aside>
 
+      {/* Mobile Bottom Navigation (Student/Faculty) */}
+      {role !== 'admin' && (
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-gray-100 pb-safe z-50 flex items-center overflow-x-auto hide-scrollbar px-3 py-2 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] gap-2">
+          {navItems.map((item) => {
+            const isActive = location.pathname.includes(item.path);
+            return (
+              <button
+                key={item.name}
+                onClick={() => nav(item.path)}
+                className={`flex flex-col items-center justify-center shrink-0 w-[4.5rem] p-2 rounded-2xl transition-all duration-300 ${
+                  isActive ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' : 'text-gray-400 hover:bg-gray-50 hover:text-gray-700'
+                }`}
+              >
+                <item.icon size={20} className={isActive ? 'mb-1.5' : 'mb-1'} />
+                <span className="text-[9px] font-bold truncate w-full text-center tracking-wider">{item.name}</span>
+              </button>
+            );
+          })}
+        </nav>
+      )}
+
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
+      <main className={`flex-1 flex flex-col h-screen overflow-hidden relative ${role !== 'admin' ? 'pb-20 md:pb-0' : ''}`}>
         
         {/* Top Header */}
-        <header className="h-16 shrink-0 bg-white/50 backdrop-blur-md flex items-center justify-between px-6 z-10 border-b border-gray-100/50">
-          <div className="flex-1 max-w-lg">
+        <header className="h-16 shrink-0 bg-white/50 backdrop-blur-md flex items-center justify-between px-4 md:px-6 z-10 border-b border-gray-100/50">
+          <div className="flex items-center gap-3 md:hidden">
+            <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center shadow-inner">
+              <GraduationCap className="text-white w-5 h-5" />
+            </div>
+            <span className="font-bold text-gray-800 text-sm">TPT Portal</span>
+          </div>
+          
+          <div className="flex-1 max-w-lg hidden md:block">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
               <input 
@@ -311,7 +362,8 @@ export default function MainLayout({ role }: { role: string }) {
         </div>
       </main>
 
-    </div>
+      </div>
+    </>
   );
 }
 
