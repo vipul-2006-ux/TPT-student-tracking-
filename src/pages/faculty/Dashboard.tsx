@@ -63,11 +63,11 @@ export default function FacultyDashboard() {
         </div>
       </div>
 
-      {/* Main Grid Content - Takes remaining height perfectly */}
-      <div className="flex-1 flex flex-col gap-3 min-h-0">
+      {/* Main Grid Content - Takes remaining height perfectly on desktop, scrolls on mobile */}
+      <div className="flex-1 flex flex-col gap-3 min-h-0 overflow-y-auto md:overflow-hidden hide-scrollbar pb-4 md:pb-0">
         
-        {/* ROW 1: Attendance Cards (approx 30% height) */}
-        <div className="grid grid-cols-3 gap-3 flex-[3] min-h-0">
+        {/* ROW 1: Attendance Cards (approx 30% height on desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:flex-[3] shrink-0 min-h-[140px] md:min-h-0">
           {/* II Year Attendance */}
           <div className="bg-white dark:bg-slate-800 rounded-xl p-3 border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
             <div className="flex items-center justify-between mb-2">
@@ -110,10 +110,10 @@ export default function FacultyDashboard() {
           </div>
         </div>
 
-        {/* ROW 2: Academics & Approvals (approx 40% height) */}
-        <div className="grid grid-cols-3 gap-3 flex-[4] min-h-0">
-          {/* Academics Block (Spans 2 columns) */}
-          <div className="col-span-2 bg-white dark:bg-slate-800 rounded-xl p-3 border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col min-h-0">
+        {/* ROW 2: Academics & Approvals (approx 40% height on desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:flex-[4] shrink-0 min-h-[180px] md:min-h-0">
+          {/* Academics Block (Spans 2 columns on desktop) */}
+          <div className="md:col-span-2 bg-white dark:bg-slate-800 rounded-xl p-3 border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col min-h-0">
             <div className="flex items-center justify-between mb-2 shrink-0">
               <h3 className="text-[11px] font-bold text-gray-800 dark:text-gray-100 flex items-center gap-1.5"><PieChart size={12} className="text-blue-600"/> Academic Performance (Overall Average)</h3>
               <select className="text-[9px] bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded px-1 py-0.5"><option>This Semester</option></select>
@@ -165,8 +165,8 @@ export default function FacultyDashboard() {
           </div>
         </div>
 
-        {/* ROW 3: Events & Notices (approx 30% height) */}
-        <div className="grid grid-cols-3 gap-3 flex-[3] min-h-0">
+        {/* ROW 3: Events & Notices (approx 30% height on desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:flex-[3] shrink-0 min-h-[160px] md:min-h-0">
           {/* Upcoming Events */}
           <div className="bg-white dark:bg-slate-800 rounded-xl p-3 border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col min-h-0">
             <h3 className="text-[11px] font-bold text-gray-800 dark:text-gray-100 flex items-center gap-1.5 mb-2 shrink-0"><CalendarIcon size={12} className="text-blue-600"/> Upcoming Events</h3>

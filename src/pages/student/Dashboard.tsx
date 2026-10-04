@@ -43,10 +43,10 @@ export default function StudentDashboard() {
   const monthName = currentDate.toLocaleString('default', { month: 'long' });
 
   return (
-    <div className="flex flex-col xl:flex-row gap-4 h-full max-w-7xl mx-auto overflow-hidden">
+    <div className="flex flex-col xl:flex-row gap-4 h-full max-w-7xl mx-auto overflow-y-auto xl:overflow-hidden hide-scrollbar pb-4 xl:pb-0">
       
       {/* Left Column (Main Content) */}
-      <div className="flex-1 flex flex-col gap-4 overflow-hidden">
+      <div className="flex-1 flex flex-col gap-4 overflow-visible xl:overflow-hidden shrink-0 min-h-[500px] xl:min-h-0">
         
         {/* Navy Banner */}
         <div className="bg-blue-900 rounded-3xl p-6 text-white relative overflow-hidden shadow-lg shrink-0 flex items-center justify-between h-32">
@@ -125,7 +125,7 @@ export default function StudentDashboard() {
       </div>
 
       {/* Right Column (Widgets) */}
-      <div className="w-full xl:w-[280px] flex flex-col gap-4 overflow-hidden shrink-0">
+      <div className="w-full xl:w-[280px] flex flex-col gap-4 overflow-visible xl:overflow-hidden shrink-0 min-h-[600px] xl:min-h-0">
         
         {/* Real-time Calendar Widget */}
         <div className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 shrink-0">
